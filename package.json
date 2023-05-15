@@ -9,12 +9,34 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.5",
+    "@radix-ui/react-dialog": "^1.0.3",
+    "@radix-ui/react-popover": "^1.0.5",
     "@types/node": "20.1.2",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "katex": "^0.16.7",
     "next": "13.4.1",
+    "next-seo": "^6.0.0",
+    "next-sitemap": "^4.0.9",
+    "notion-client": "^6.16.0",
+    "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "react-notion-x": "^6.16.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "styled-component": "^2.8.0",
+    "styled-reset": "^4.4.7",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.20.0",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.1.1"
   }
 }
