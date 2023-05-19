@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
-import PostCard from './PostCard.Contents';
+import styled, { css } from "styled-components";
+import PostCard from "./PostCard.Contents";
 
 export const style = css`
   display: flex;
-  height: 240px;
+  height: 300px;
   gap: 48px;
 
   .cover {
@@ -12,6 +12,7 @@ export const style = css`
     border-radius: 14px;
     position: relative;
     overflow: hidden;
+
     transition: all 0.2s ease-out;
   }
 

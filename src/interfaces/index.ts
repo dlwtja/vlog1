@@ -3,6 +3,9 @@ export interface IAPIError {
 }
 
 export interface Response<T> {
+  title?: any;
+  properties?: any;
+  id?: any;
   data: T;
   status: string;
   error: {

@@ -7,7 +7,7 @@ import { ExtendedRecordMap } from "notion-types";
 import getConfig from "next/config";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const NOTION_PAGE_ID = "1cb430fe-1df4-41a8-870a-4605e9d6c546";
+  const page_id = req.query.id as string;
   const { publicRuntimeConfig } = getConfig();
   const auth = publicRuntimeConfig.NOTION_KEY;
   const activeUser = "dlwtja@gmail.com";
@@ -20,20 +20,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const notionRenderClient = new NotionAPI({
     activeUser,
-    authToken,
   });
-
   const notion = new Client({ auth: publicRuntimeConfig.NOTION_KEY });
   (async () => {
     try {
       if (req.method === "GET") {
         const response = (await notion.pages.retrieve({
-          page_id: NOTION_PAGE_ID,
+          page_id: page_id,
         })) as PageObjectResponse;
-        //   const notionPage = await notionRenderClient.getPage(NOTION_PAGE_ID);
+        const notionPage = await notionRenderClient.getPage(page_id);
 
         const data = {
-          //   notionPage,
+          notionPage,
           post: response,
         };
 

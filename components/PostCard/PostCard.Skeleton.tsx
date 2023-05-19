@@ -1,6 +1,6 @@
-import Skeleton from 'react-loading-skeleton';
-import styled from 'styled-components';
-import { style } from './PostCard.Styled';
+import Skeleton from "react-loading-skeleton";
+import styled from "styled-components";
+import { style } from "./PostCard.Styled";
 
 interface IProps {
   className?: string;

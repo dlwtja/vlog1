@@ -1,47 +1,49 @@
-import { memo } from 'react';
-import Image from 'next/image';
-
+import { memo } from "react";
+import Image from "next/image";
+import type { Response } from "../../src/interfaces";
 import type {
   PageObjectResponse,
-  RichTextItemResponse
-} from '@notionhq/client/build/src/api-endpoints';
-import Link from 'next/link';
+  RichTextItemResponse,
+} from "@notionhq/client/build/src/api-endpoints";
+import Link from "next/link";
 
 interface IPostCardProps {
   className?: string;
-  data: PageObjectResponse;
-  lastRef?: (node?: Element | null | undefined) => void;
+  data: Response<PageObjectResponse[]>;
 }
 
-const PostCard: React.FC<IPostCardProps> = ({ data, className, lastRef }) => {
+const PostCard: React.FC<IPostCardProps> = ({ data, className }) => {
   const title = data.properties.title as {
-    type: 'title';
+    properties: any;
+    type: "title";
     title: Array<RichTextItemResponse>;
     id: string;
   };
 
-  const subTitle = data.properties.subTitle as {
-    type: 'rich_text';
+  const subTitle = data.properties.subtitle as {
+    type: "rich_text";
     rich_text: Array<RichTextItemResponse>;
     id: string;
   };
 
-  const publishDate = data.properties.publishDate as {
-    type: 'date';
+  const publishDate = data.properties.publishdate as {
+    type: "date";
     date: DateResponse | null;
     id: string;
   };
 
-  const categories = data.properties.category as {
-    type: 'multi_select';
+  const categories = data.properties.categories as {
+    type: "multi_select";
     multi_select: Array<SelectPropertyResponse>;
     id: string;
   };
-
+  console.log(data);
   return (
-    <Link href={`/post/@${data.id}`}>
-      <div className={`${className} post-card`} ref={lastRef}>
-        {data.cover && <CoverImage cover={data.cover} />}
+    <Link href={`/post/${data.id}`}>
+      <div className={`${className} post-card`}>
+        <div className="cover">
+          <Image src={data.properties.cover.url} alt="" fill />
+        </div>
         <div className="card-contents">
           {categories && (
             <div className="categories">
@@ -77,31 +79,3 @@ const PostCard: React.FC<IPostCardProps> = ({ data, className, lastRef }) => {
 };
 
 export default memo(PostCard);
-
-const CoverImage = ({
-  cover
-}: {
-  cover:
-    | {
-        type: 'external';
-        external: {
-          url: string;
-        };
-      }
-    | {
-        type: 'file';
-        file: {
-          url: string;
-          expiry_time: string;
-        };
-      };
-}) => {
-  if (cover.type === 'external') {
-    return (
-      <div className="cover">
-        <Image src={cover.external.url} alt="" fill />
-      </div>
-    );
-  }
-  return null;
-};

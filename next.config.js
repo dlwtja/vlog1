@@ -19,4 +19,7 @@ module.exports = {
   env: {
     ...localEnv, // Will be available on both server and client
   },
+  images: {
+    domains: ["www.notion.so"],
+  },
 };

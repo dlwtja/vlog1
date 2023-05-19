@@ -17,8 +17,7 @@ export default function handler(
 ) {
   const database_id = publicRuntimeConfig.DATABASE_ID;
   const auth = publicRuntimeConfig.NOTION_KEY;
-  console.log(auth);
-  console.log(database_id);
+
   if (!auth || !database_id) {
     res.status(401).json({ message: "인증 실패" });
     return;

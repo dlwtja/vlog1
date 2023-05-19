@@ -1,11 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { Client } from "@notionhq/client";
-import getConfig from "next/config";
-import { postApis } from "../core/apis/posts";
-import type { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
+
+import PostList from "../../components/PostList";
 const inter = Inter({ subsets: ["latin"] });
 export async function getStaticProps() {
   const res = await fetch("http://localhost:3001/api/posts");
@@ -20,8 +18,7 @@ export async function getStaticProps() {
 }
 
 const Home = ({ data }: any) => {
-  console.log(data);
-
+  // console.log(data.data.properties);
   return (
     <>
       <Head>
@@ -30,12 +27,8 @@ const Home = ({ data }: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h2>Pages from Notion</h2>
-      <div>
-        {data?.data.map((item: any) => (
-          <li key={item.id}>{item.id}</li>
-        ))}
-      </div>
+
+      <PostList data={data} />
     </>
   );
 };

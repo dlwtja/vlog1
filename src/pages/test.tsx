@@ -11,7 +11,7 @@ import type {
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import type { Response } from "../interfaces";
-
+import "react-notion-x/src/styles.css";
 import type { ExtendedRecordMap } from "notion-types";
 import { NotionRenderer } from "react-notion-x";
 interface IPostProps {
@@ -44,15 +44,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 };
 const Home = ({ data }: any) => {
-  console.log(data.data.post.properties);
-  const title = data.data.post.properties as {
-    type: "title";
-    title: Array<RichTextItemResponse>;
-    id: string;
-  };
-  const title1 = data.data.post.properties["이름"].title[0].plain_text;
-  console.log(title1);
-  console.log(data.data.notionPage);
+  // console.log(data);
+  // const title = data.data.post.properties.title as {
+  //   type: "title";
+  //   title: Array<RichTextItemResponse>;
+  //   id: string;
+  // };
+  // const title1 = data.data.post.properties["title"].title[0].plain_text;
+  // console.log(title);
+  // console.log(title1);
+  // console.log(data.data.notionPage);
 
   return (
     <>
@@ -62,9 +63,9 @@ const Home = ({ data }: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="post-content-wrap">
+      {/* <div className="post-content-wrap">
         <NotionRenderer recordMap={data.data.notionPage} fullPage={true} />
-      </div>
+      </div> */}
     </>
   );
 };

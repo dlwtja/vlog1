@@ -1,19 +1,19 @@
-import { useQuery, UseQueryOptions, useQueryClient } from 'react-query';
-import { postApis } from '../apis/posts';
+import { useQuery, UseQueryOptions, useQueryClient } from "react-query";
+import { postApis } from "../apis/posts";
 
-import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { Response } from '../../interfaces';
-import type { ExtendedRecordMap } from 'notion-types';
-import { IPostsParams } from '../../interfaces/posts';
+import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { Response } from "../../interfaces";
+import type { ExtendedRecordMap } from "notion-types";
+import { IPostsParams } from "../../interfaces/posts";
 
 export const postsQueryKey = {
   posts: (params: IPostsParams) =>
     [
-      'posts',
+      "posts",
       JSON.parse(params.filter).query,
-      ...JSON.parse(params.filter).categories
+      ...JSON.parse(params.filter).categories,
     ] as const,
-  post: (id: string) => ['post', id] as const
+  post: (id: string) => ["post", id] as const,
 };
 
 export const useGetPosts = (
@@ -24,7 +24,7 @@ export const useGetPosts = (
     postsQueryKey.posts(params),
     () => postApis.getPosts(params),
     {
-      ...(options as any)
+      ...(options as any),
     }
   );
 };
@@ -40,6 +40,6 @@ export const useGetPost = (
 ) => {
   return useQuery(postsQueryKey.post(id), () => postApis.getPost(id), {
     ...(options as any),
-    enabled: false
+    enabled: false,
   });
 };
