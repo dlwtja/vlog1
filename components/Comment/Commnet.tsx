@@ -19,7 +19,7 @@ const Comment = () => {
     script.setAttribute("repo", "dlwtja/vlog1");
     script.setAttribute("issue-term", "title");
     script.setAttribute("label", "comment");
-    script.setAttribute("theme", `github-${mode}`);
+    script.setAttribute("theme", `github-light`);
     script.setAttribute("crossorigin", "anonymous");
     container.appendChild(script);
   }, [container]);
