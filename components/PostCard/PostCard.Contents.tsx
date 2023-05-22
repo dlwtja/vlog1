@@ -10,9 +10,10 @@ import Link from "next/link";
 interface IPostCardProps {
   className?: string;
   data: Response<PageObjectResponse[]>;
+  lastRef?: (node?: Element | null | undefined) => void;
 }
 
-const PostCard: React.FC<IPostCardProps> = ({ data, className }) => {
+const PostCard: React.FC<IPostCardProps> = ({ data, className, lastRef }) => {
   const title = data.properties.title as {
     properties: any;
     type: "title";
@@ -37,10 +38,10 @@ const PostCard: React.FC<IPostCardProps> = ({ data, className }) => {
     multi_select: Array<SelectPropertyResponse>;
     id: string;
   };
-  console.log(data);
+
   return (
     <Link href={`/post/${data.id}`}>
-      <div className={`${className} post-card`}>
+      <div className={`${className} post-card`} ref={lastRef}>
         <div className="cover">
           <Image src={data.properties.cover.url} alt="" fill />
         </div>

@@ -1,10 +1,10 @@
-import { useState, useCallback } from 'react';
-import Posts from '../Posts';
-import CategoryFilter from '../CategoryFilter';
-import TextFilter from '../TextFilter';
+import { useState, useCallback } from "react";
+import Posts from "../PostList";
+import CategoryFilter from "../CategoryFilter";
+import TextFilter from "../TextFilter";
 
-import type { PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import type { Response } from '../../interfaces';
+import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { Response } from "../../src/interfaces";
 
 interface IHomeProps {
   className?: string;
@@ -13,7 +13,7 @@ interface IHomeProps {
 
 const Home: React.FC<IHomeProps> = ({ className, initialPosts }) => {
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
-  const [enteredText, setEnteredText] = useState<string>('');
+  const [enteredText, setEnteredText] = useState<string>("");
 
   const handleChangeFilter = useCallback((value: string) => {
     setSelectedCategory((prev) =>

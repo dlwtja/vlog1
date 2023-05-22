@@ -57,7 +57,7 @@ export default function handler(
           filter,
           sorts: [
             {
-              property: "publishdate",
+              property: "publishDate",
               direction: "descending",
             },
           ],

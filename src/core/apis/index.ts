@@ -1,17 +1,17 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-import type { Response } from '../../interfaces';
+import type { Response } from "../../interfaces";
 
 export const api: AxiosInstance = axios.create({
   baseURL:
-    process.env.NEXT_PUBLIC_APP_ENV === 'production'
-      ? 'https://byseop.com/api'
-      : 'http://localhost:3000/api',
+    process.env.NEXT_PUBLIC_APP_ENV === "production"
+      ? "https://byseop.com/api"
+      : "http://localhost:3001/api",
   headers: {
-    'Content-Type': 'application/json',
-    'Accept-Language': 'ko'
+    "Content-Type": "application/json",
+    "Accept-Language": "ko",
   },
-  timeout: 10000
+  timeout: 10000,
 });
 
 // interface
@@ -39,30 +39,30 @@ interface Request extends AxiosRequestConfig {
 }
 
 export async function request<R>({
-  method = 'GET',
+  method = "GET",
   url,
   params,
-  lang = 'ko'
+  lang = "ko",
 }: Request) {
   let data;
-  if (method !== 'GET' && params) data = params;
+  if (method !== "GET" && params) data = params;
 
   const { data: result } = await api.request<Response<R>>({
-    method: method || 'GET',
+    method: method || "GET",
     url,
-    headers: { 'Accept-Language': lang },
+    headers: { "Accept-Language": lang },
     ...(data && { data }),
-    ...(params && method === 'GET' && { params })
+    ...(params && method === "GET" && { params }),
   });
   return result;
 }
 
-export async function formRequest<R>({ url, data, lang = 'ko' }: Request) {
+export async function formRequest<R>({ url, data, lang = "ko" }: Request) {
   const { data: result } = await api.request<Response<R>>({
-    method: 'POST',
+    method: "POST",
     url,
-    headers: { 'Accept-Language': lang, 'Content-Type': 'multipart/form-data' },
-    data
+    headers: { "Accept-Language": lang, "Content-Type": "multipart/form-data" },
+    data,
   });
   return result;
 }

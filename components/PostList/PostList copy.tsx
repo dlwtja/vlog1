@@ -85,11 +85,7 @@ const Posts: React.FC<IPostsProps> = ({
   );
 };
 
-export default memo(Posts);
-
 const PostList: React.FC<PostListProps> = ({
-  className,
-  id,
   initialPosts,
   selectedCategory,
   enteredText,
@@ -108,12 +104,15 @@ const PostList: React.FC<PostListProps> = ({
       initialData: !mounted ? initialPosts : undefined,
     }
   );
-  console.log(data);
+
   return (
-    <div>
-      {data?.data.map((data: any) => (
-        <PostCard.Contents data={data} />
+    <ul>
+      {data?.data.map((post) => (
+        <li key={post.id}>
+          <PostCard.Contents data={data} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
+export default memo(PostList);

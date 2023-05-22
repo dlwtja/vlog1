@@ -6,7 +6,7 @@ import type { ExtendedRecordMap } from "notion-types";
 export const postApis = {
   getPosts: (params = {}) =>
     request<PageObjectResponse[]>({
-      url: "http://localhost:3001/api/posts",
+      url: "/posts",
       method: "GET",
       params,
     }),
@@ -16,7 +16,7 @@ export const postApis = {
       notionPage: ExtendedRecordMap;
       post: PageObjectResponse;
     }>({
-      url: "http://localhost:3001/api/post",
+      url: "/post",
       method: "GET",
       params: {
         id,

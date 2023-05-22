@@ -25,7 +25,6 @@ const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then((m) => m.Code)
 );
 const PostList1: React.FC<IPostPageProps> = ({ id, data, className }) => {
-  console.log(data);
   const { mode } = useRootState((state) => state.theme);
   const { data: postData } = useGetPost(id, {
     initialData: data,

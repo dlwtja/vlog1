@@ -10,7 +10,7 @@ export const DEFINED_FILTER = {
     multi_select: {
       contains: name,
     },
-    property: "lRz%3A",
+    property: "k%40Sw",
   }),
   TITLE_CONTAINED: (query: string) =>
     ({
@@ -25,7 +25,7 @@ export const DEFINED_FILTER = {
       rich_text: {
         contains: query,
       },
-      property: "%7DEAT",
+      property: "%3AMS%5B",
       type: "rich_text",
     } as const),
 } as const;

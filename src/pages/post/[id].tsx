@@ -33,6 +33,7 @@ export const getServerSideProps = async (context: any) => {
         data,
         id,
         revalidate: 3600,
+        fallback: true,
       },
     };
   } catch (e) {
