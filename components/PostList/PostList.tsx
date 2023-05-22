@@ -26,29 +26,7 @@ interface IPostsProps {
   enteredText: string;
   data?: Response<PageObjectResponse[]>;
 }
-export const getServerSideProps = async (context: any) => {
-  const { id } = context.query;
 
-  try {
-    const res = await fetch(`http://localhost:3001/api/post${id}`);
-    const data = await res.json();
-
-    return {
-      props: {
-        data,
-        revalidate: 3600,
-      },
-    };
-  } catch (e) {
-    console.log(e);
-    return {
-      props: {
-        data: null,
-        revalidate: 3600,
-      },
-    };
-  }
-};
 const Posts: React.FC<IPostsProps> = ({
   className,
   initialPosts,

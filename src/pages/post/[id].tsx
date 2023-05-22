@@ -25,12 +25,11 @@ export const getServerSideProps = async (context: any) => {
   const { id } = context.query;
   console.log(id);
   try {
-    const res = await fetch(`http://localhost:3001/api/post?id=${id}`);
-    const data = await res.json();
+    const res = await postApis.getPost(id);
 
     return {
       props: {
-        data,
+        data: res,
         id,
         revalidate: 3600,
         fallback: true,
