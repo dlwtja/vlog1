@@ -7,7 +7,7 @@ import type {
 import type { Response } from "../../src/interfaces";
 import { NotionRenderer } from "react-notion-x";
 import { NextSeo } from "next-seo";
-import * as PostCard from "../PostCard";
+import Comment from "../Comment";
 import { useGetPost } from "../../src/core/queries/posts";
 import useRootState from "../../src/core/hooks/useRootState";
 import type { ExtendedRecordMap } from "notion-types";
@@ -75,6 +75,7 @@ const PostList1: React.FC<IPostPageProps> = ({ id, data, className }) => {
           />
         </div>
       )}
+      <Comment />
     </div>
   );
 };
