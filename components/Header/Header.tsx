@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import useRootState from "../../src/core/hooks/useRootState";
 import styleThemeSlice from "../../src/core/reducer/styleTheme";
-
+import { IoIosAt } from "react-icons/io";
 import { BsGithub } from "react-icons/bs";
 import { IoSunny, IoMoon } from "react-icons/io5";
-
+import Tag from "../Tag";
 interface IProps {
   className?: string;
 }
@@ -38,6 +38,7 @@ const firaMono = Fira_Mono({
 const Header: React.FC<IProps> = ({ className }) => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState<boolean>(false);
   const { mode } = useRootState((state) => state.theme);
 
   const handleClickThemeToggle = () => {
@@ -47,7 +48,20 @@ const Header: React.FC<IProps> = ({ className }) => {
       })
     );
   };
-
+  const handleCopyEmail = () => {
+    const email = "example@example.com"; // 이메일 주소 입력
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+        setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("이메일 주소 복사 실패:", error);
+      });
+  };
   useEffect(() => {
     setLoaded(true);
   }, []);
@@ -57,7 +71,7 @@ const Header: React.FC<IProps> = ({ className }) => {
       <div className="header-inner">
         <div className="logo-wrap">
           <span className={`logo ${firaMono.className}`}>
-            <Link href="/">test</Link>
+            <Link href="/">HWANG</Link>
           </span>
         </div>
         <div className="actions">

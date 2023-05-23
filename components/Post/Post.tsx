@@ -12,6 +12,7 @@ import { useGetPost } from "../../src/core/queries/posts";
 import useRootState from "../../src/core/hooks/useRootState";
 import type { ExtendedRecordMap } from "notion-types";
 import dynamic from "next/dynamic";
+import defaultSeoConfig from "../../next-seo.config.js";
 import { customMapImageUrl } from "../../src/core/utils/notion-client/customImageMap";
 interface IPostPageProps {
   className?: string;
@@ -46,37 +47,40 @@ const PostList1: React.FC<IPostPageProps> = ({ id, data, className }) => {
     rich_text: Array<RichTextItemResponse>;
     id: string;
   };
-  const linkMapper = (pageId: string) => `${pageId}`;
+  const linkMapper = (pageId: string) => `@${pageId}`;
   return (
-    <div className={`post-wrapper ${className}`}>
-      <div className="article-header">
-        {cover && (
-          <div className="cover-wrap">
-            <div className="cover">
-              <Image src={cover.external.url} alt="" fill />
+    <>
+      <NextSeo title={title.title[0].plain_text} />
+      <div className={`post-wrapper ${className}`}>
+        <div className="article-header">
+          {cover && (
+            <div className="cover-wrap">
+              <div className="cover">
+                <Image src={cover.external.url} alt="" fill />
+              </div>
             </div>
-          </div>
-        )}
-        {title && (
-          <div className="post-title-wrap">
-            <h1>{title.title[0].plain_text}</h1>
-            {subTitle && <h2>{subTitle.rich_text[0].plain_text}</h2>}
-          </div>
-        )}
-      </div>
-      {postData?.data.notionPage && (
-        <div className="post-content-wrap">
-          <NotionRenderer
-            recordMap={postData.data.notionPage}
-            darkMode={mode === "dark"}
-            components={{ Code, nextLink: Link, nextImage: Image }}
-            mapPageUrl={linkMapper}
-            mapImageUrl={customMapImageUrl}
-          />
+          )}
+          {title && (
+            <div className="post-title-wrap">
+              <h1>{title.title[0].plain_text}</h1>
+              {subTitle && <h2>{subTitle.rich_text[0].plain_text}</h2>}
+            </div>
+          )}
         </div>
-      )}
-      <Comment />
-    </div>
+        {postData?.data.notionPage && (
+          <div className="post-content-wrap">
+            <NotionRenderer
+              recordMap={postData.data.notionPage}
+              darkMode={mode === "dark"}
+              components={{ Code, nextLink: Link, nextImage: Image }}
+              mapPageUrl={linkMapper}
+              mapImageUrl={customMapImageUrl}
+            />
+          </div>
+        )}
+        <Comment />
+      </div>
+    </>
   );
 };
 

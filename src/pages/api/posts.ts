@@ -78,11 +78,7 @@ export default function handler(
     } catch (e) {
       const error = e as any;
       const { status, body } = error;
-      if (body) {
-        res.status(status).json(JSON.parse(body));
-      } else {
-        res.status(500).json({ message: "Server error" });
-      }
+      res.status(status).json(JSON.parse(body));
     }
   })();
 }

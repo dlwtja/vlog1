@@ -3,7 +3,7 @@ import PostCard from "./PostCard.Contents";
 
 export const style = css`
   display: flex;
-  height: 300px;
+  height: 320px;
   gap: 48px;
 
   .cover {
@@ -55,9 +55,9 @@ export const style = css`
 
   &:hover {
     .cover {
-      box-shadow: rgb(0 0 33 / 7%) 0px 16px 22.4px 4.8px,
-        rgb(0 0 33 / 5%) 0px 3.2px 16px 0px, rgb(0 0 33 / 7%) 0px 0px 1px 0px;
-      transform: translate3D(0, -3%, 0);
+      transform: scale(1.05); /* 크기를 1.05배로 확대 */
+      box-shadow: 0px 16px 22.4px 4.8px rgb(0 0 33 / 7%),
+        0px 3.2px 16px 0px rgb(0 0 33 / 5%), 0px 0px 1px 0px rgb(0 0 33 / 7%);
     }
 
     .title {

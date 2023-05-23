@@ -22,6 +22,7 @@
     "next": "13.4.1",
     "next-seo": "^6.0.0",
     "next-sitemap": "^4.0.9",
+    "nextjs-progressbar": "^0.0.16",
     "notion-client": "^6.16.0",
     "prismjs": "^1.29.0",
     "react": "18.2.0",

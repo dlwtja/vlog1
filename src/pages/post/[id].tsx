@@ -1,8 +1,5 @@
 import Post from "../../../components/Post";
 import { postApis } from "../../core/apis/posts";
-import { NextSeo } from "next-seo";
-
-import type { GetStaticPaths, GetStaticProps } from "next";
 import type { ExtendedRecordMap } from "notion-types";
 import type {
   PageObjectResponse,
@@ -45,11 +42,28 @@ export const getServerSideProps = async (context: any) => {
   }
 };
 
-const postlist3: React.FC<IPostPageProps> = ({ id, data }: IPostPageProps) => {
+export default function ({ id, data }: IPostPageProps) {
+  const cover = data?.data.post.cover as {
+    type: "external";
+    external: {
+      url: TextRequest;
+    };
+  };
+
+  const title = data?.data.post.properties.title as {
+    type: "title";
+    title: Array<RichTextItemResponse>;
+    id: string;
+  };
+
+  const subTitle = data?.data.post.properties.subTitle as {
+    type: "rich_text";
+    rich_text: Array<RichTextItemResponse>;
+    id: string;
+  };
   return (
     <>
       <Post data={data} id={id} />
     </>
   );
-};
-export default postlist3;
+}
