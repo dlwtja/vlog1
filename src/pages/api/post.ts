@@ -10,17 +10,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const page_id = req.query.id as string;
   const { publicRuntimeConfig } = getConfig();
   const auth = publicRuntimeConfig.NOTION_KEY;
-  const activeUser = publicRuntimeConfig.activeUser;
+  const activeUser = publicRuntimeConfig.ActiveUser;
   const authToken = publicRuntimeConfig.NOTION_KEY;
 
   if (!auth || !activeUser || !authToken) {
-    res.status(401).json({ message: "인증 실패" });
+    res.status(401).json({ message: "인증 실패1" });
     return;
   }
 
   const notionRenderClient = new NotionAPI({
     activeUser,
-    authToken,
   });
 
   const notion = new Client({ auth: publicRuntimeConfig.NOTION_KEY });
@@ -51,7 +50,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       if (body) {
         res.status(status).json(JSON.parse(body));
       } else {
-        console.log(e);
         res.status(500).json({ message: "Server error" });
       }
     }
