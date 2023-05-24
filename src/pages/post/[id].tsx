@@ -20,9 +20,10 @@ interface IPostPageProps {
 }
 export const getServerSideProps = async (context: any) => {
   const { id } = context.query;
-  console.log(id);
+
   try {
     const res = await postApis.getPost(id);
+
     return {
       props: {
         data: res,
@@ -32,6 +33,7 @@ export const getServerSideProps = async (context: any) => {
       },
     };
   } catch (e) {
+    console.log(e);
     return {
       props: {
         data: null,
