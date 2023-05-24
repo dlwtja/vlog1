@@ -7,7 +7,7 @@ import { theme } from "../styles/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
 import LayoutInner from "../../components/Layouts/LayoutInner";
 import { DefaultLayout } from "../../components/Layouts";
-import { ReactQueryDevtools } from "react-query/devtools";
+
 import { DefaultSeo } from "next-seo";
 import NextNProgress from "nextjs-progressbar";
 import { SkeletonTheme } from "react-loading-skeleton";
