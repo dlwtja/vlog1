@@ -6,7 +6,7 @@ export const api: AxiosInstance = axios.create({
   baseURL:
     process.env.NEXT_PUBLIC_APP_ENV === "production"
       ? "http://localhost:3000/api"
-      : "https://vlog1-git-main-dlwtja.vercel.app/api",
+      : "https://vlog1.vercel.app/api",
   headers: {
     "Content-Type": "application/json",
     "Accept-Language": "ko",
