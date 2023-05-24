@@ -62,7 +62,7 @@ export default function ({ id, data }: IPostPageProps) {
     rich_text: Array<RichTextItemResponse>;
     id: string;
   };
-  console.log(data);
+
   return (
     <>
       <Post data={data} id={id} />
