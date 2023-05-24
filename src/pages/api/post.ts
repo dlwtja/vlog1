@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const page_id = req.query.id as string;
   const { publicRuntimeConfig } = getConfig();
   const auth = publicRuntimeConfig.NOTION_KEY;
-  const activeUser = "dlwtja@gmail.com";
+  const activeUser = publicRuntimeConfig.activeUser;
   const authToken = publicRuntimeConfig.NOTION_KEY;
 
   if (!auth || !activeUser || !authToken) {
@@ -20,7 +20,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const notionRenderClient = new NotionAPI({
     activeUser,
+    authToken,
   });
+
   const notion = new Client({ auth: publicRuntimeConfig.NOTION_KEY });
   (async () => {
     try {

@@ -47,10 +47,10 @@ const PostList1: React.FC<IPostPageProps> = ({ id, data, className }) => {
     rich_text: Array<RichTextItemResponse>;
     id: string;
   };
-  const linkMapper = (pageId: string) => `@${pageId}`;
+  const linkMapper = (pageId: string) => `${pageId}`;
   return (
     <>
-      <NextSeo title={title.title[0].plain_text} />
+      <NextSeo title={title?.title[0].plain_text} />
       <div className={`post-wrapper ${className}`}>
         <div className="article-header">
           {cover && (

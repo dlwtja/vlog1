@@ -23,7 +23,6 @@ export const getServerSideProps = async (context: any) => {
   console.log(id);
   try {
     const res = await postApis.getPost(id);
-
     return {
       props: {
         data: res,
@@ -61,6 +60,7 @@ export default function ({ id, data }: IPostPageProps) {
     rich_text: Array<RichTextItemResponse>;
     id: string;
   };
+  console.log(data);
   return (
     <>
       <Post data={data} id={id} />
