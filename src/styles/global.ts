@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle<{ mode: IStyleCode }>`
     /* transition: color 0.2s ease-out; */
   }
   html {
+  
     font-size: 10px;
     font-family: '-apple-system',
     'BlinkMacSystemFont',
@@ -63,6 +64,7 @@ const GlobalStyle = createGlobalStyle<{ mode: IStyleCode }>`
 
   body {
     background: var(--bg-page1);
+    
   }
 
   a {

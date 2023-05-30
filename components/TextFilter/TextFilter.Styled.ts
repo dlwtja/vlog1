@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import TextFilter from './TextFilter';
+import styled from "styled-components";
+import TextFilter from "./TextFilter";
 
 const S = styled(TextFilter)`
   .dialog-trigger-button {
@@ -34,7 +34,7 @@ const S = styled(TextFilter)`
       background: var(--slight-layer);
     }
 
-    &[data-entered='true'] {
+    &[data-entered="true"] {
       width: auto;
       padding: 0 1rem;
     }
